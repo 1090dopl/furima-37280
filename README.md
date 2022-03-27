@@ -1,24 +1,41 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| name               | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| nickname           | string | null: false  |
+| birthday           | string | null:false  |
 
-Things you may want to cover:
+.has_many ：items
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
+| category| string |null: false |
+| price   | string | null :false |
+| item     | string | null :false |
 
-* Database creation
+.has_one :purchases
 
-* Database initialization
 
-* How to run the test suite
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| item   | references | null: false, foreign_key: true |
+| buyer | references | null: false, foreign_key: true |
+|address | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+.has_one :address
+.has_one :items
 
-* Deployment instructions
 
-* ...
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| postal_code | string  | null: false                         |
+| user    | references | null: false, foreign_key: true |
+| house_number    | references | null: false, foreign_key: true 
+
+.belongs_to :purchases
