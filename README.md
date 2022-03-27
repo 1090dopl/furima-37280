@@ -20,10 +20,10 @@
 | name   | string | null: false |
 | category_id| integer |null: false |
 | price   | integer | null :false |
-| explanation     | string | null :false |
+| explanation     | text | null :false |
 | charge_id  | integer | null  :false|
 | status_id   | integer | null :false |
-| user      | integer   | null :false,foreign_key: true|
+| user      | references   | null :false,foreign_key: true|
 | day_id      | integer  | null :false |
 | prefecture_id| integer  | null :false|
 
@@ -36,8 +36,8 @@
 | user | references | null: false, foreign_key: true |
 
 .has_one :address
-.belongs_to :items 
-.has_many :users
+.belongs_to :items
+.has_one :users
 
 
 # addressesテーブル
@@ -46,7 +46,8 @@
 | postal_code | string  | null  :false       |
 | prefecture_id | integer  | null :false |
 | city       | string  | null :false  |
-| house_number| string | null: false| 
+| house_number| string | null :false| 
 | building_name | string |           |
+| phone_number  |string |  null :false         |
 
 .belongs_to :purchases
