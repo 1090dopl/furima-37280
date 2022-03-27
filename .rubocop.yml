@@ -29,4 +29,31 @@ Layout/LineLength:
 
       Metrics/CyclomaticComplexity:
        MAX: 10
-       
+
+      Metrics/MethodLength:
+       Max: 30
+
+      Metrics/BlockNesting:
+       Max: 5
+
+       Metrics/ClassLength:
+       Enabled: false 
+
+       Style/EmptyMethod:
+       EnforcedStyle: expanded
+
+       Style/ClassAndModuleChildren:
+       Enabled: false
+  
+       Style/AsciiCommnts:
+       Enabled: false
+
+       Style/Documentation:
+       Enabled: false
+
+       Style/SymbolArray:
+       Enabled: false
+
+       Style/FrozenStringLiteralComment:
+       Enabled: false
+      
