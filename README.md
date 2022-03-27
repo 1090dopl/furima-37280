@@ -28,7 +28,7 @@
 | prefecture_id| integer  | null :false|
 
 .has_one :purchase
-.has_many :users
+.belong_to :user
 
 # purchasesテーブル
 | Column | Type       | Options                        |
