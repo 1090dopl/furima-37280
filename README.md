@@ -27,7 +27,8 @@
 | day_id      | integer  | null :false |
 | prefecture_id| integer  | null :false|
 
-.has_one :purchases
+.has_one :purchase
+.has_many :users
 
 # purchasesテーブル
 | Column | Type       | Options                        |
@@ -36,8 +37,8 @@
 | user | references | null: false, foreign_key: true |
 
 .has_one :address
-.belongs_to :items
-.has_one :users
+.belongs_to :item
+.belong_to :user
 
 
 # addressesテーブル
@@ -49,5 +50,6 @@
 | house_number| string | null :false| 
 | building_name | string |           |
 | phone_number  |string |  null :false         |
+| record        |string | null :false          |
 
-.belongs_to :purchases
+.belongs_to :purchase
