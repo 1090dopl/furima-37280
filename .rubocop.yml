@@ -1,0 +1,32 @@
+AllCop:
+
+Exclude:
+- "vendor/**/*"
+- "fdb/**/*"
+- "config/**/*"
+- "bin/*"
+- "node_modules/**/*"
+- "Gemfile"
+
+
+Layout/LineLength:
+  Max: 130
+
+  Exclude:
+   - "Rakefile"
+   - "spec/rails_helper.rb"
+   - "spec/spec_helper.rb"
+
+   Metrics/BlockLength:
+    Exclude:
+     -"spec/**/*"
+
+    Metrics/AbcSize:
+     Max: 50
+
+     Metrics/PerceivedComplexity:
+      Max: 8
+
+      Metrics/CyclomaticComplexity:
+       MAX: 10
+       

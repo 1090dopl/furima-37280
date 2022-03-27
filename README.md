@@ -1,41 +1,51 @@
-
+# users テーブル
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| name               | string | null: false |
-| email              | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_reading  | string  | null:false  |
+|first_name_reading  | string |null: false   |
+| email              | string | null: false ,unique: true|
 | encrypted_password | string | null: false |
 | nickname           | string | null: false  |
-| birthday           | string | null:false  |
+| birthday           | date | null:false  |
 
 .has_many ：items
 
 
-
+# itemsテーブル
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | name   | string | null: false |
 | category| string |null: false |
 | price   | string | null :false |
 | item     | string | null :false |
+| charge  | string | null  :false|
+|status   | string | null :false |
+| image   | string | null :false |
+
 
 .has_one :purchases
 
-
+# purchasesテーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | item   | references | null: false, foreign_key: true |
 | buyer | references | null: false, foreign_key: true |
-|address | references | null: false, foreign_key: true |
 
 .has_one :address
-.has_one :items
+.has_one :items 
 
 
-
+# addressテーブル
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| postal_code | string  | null: false                         |
-| user    | references | null: false, foreign_key: true |
-| house_number    | references | null: false, foreign_key: true 
+| postal_code | string  | null  :false       |
+| prefecture | integer  | null :false |
+| city       | string  | null :false  |
+| house_number| references | null: false,foreign_key:true| 
+| building_name | string | null :false|
+
+
 
 .belongs_to :purchases
