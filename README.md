@@ -50,6 +50,6 @@
 | house_number| string | null :false| 
 | building_name | string |           |
 | phone_number  |string |  null :false         |
-|  user         |references| null :false,foreign_key: true
+| purchase _id |references| null :false,foreign_key: true |
 
 .belongs_to :purchase
