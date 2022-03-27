@@ -25,7 +25,7 @@
 | status_id   | integer | null :false |
 | user      | references   | null :false,foreign_key: true|
 | day_id      | integer  | null :false |
-| prefecture_id| integer  | null :false|
+| prefecture_id| references  | null :false,foreign_key: true|
 
 .has_one :purchase
 .belong_to :user
@@ -38,18 +38,18 @@
 
 .has_one :address
 .belongs_to :item
-.belong_to :user
+.belongs_to :user
 
 
 # addressesテーブル
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | postal_code | string  | null  :false       |
-| prefecture_id | integer  | null :false |
+| prefecture_id | references | null :false,foreign_key: true |
 | city       | string  | null :false  |
 | house_number| string | null :false| 
 | building_name | string |           |
 | phone_number  |string |  null :false         |
-| record        |string | null :false          |
+
 
 .belongs_to :purchase
