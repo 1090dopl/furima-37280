@@ -6,27 +6,25 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <script type="text/javascript" src="https://js.pay.jp/v1/"></script>
-  <%= stylesheet_link_tag 'application', media: 'all'%>
-  <%= javascript_pack_tag 'application' %>
+  <%= stylesheet_link_tag 'application', media: 'all','data-turbolinks-track':'reload'%>
+  <%= javascript_pack_tag 'application'  %>
 </head>
 
 <body>
   <header class="header">
     <div class="inner">
     <div class="nav">
-    <h1> furima</h1>
      <% if user_signed_in? %>
-       <div class="nav__right">
-         <%=link_to "ログアウト",destroty_user_session_path,method: :delete%>
-         <%=link_to "ユーザー名",user_registration_path,class: :nav__btn%>
+       <div class="lists_right">
+         <%=link_to "ログアウト",destroy_user_session_path,method: :delete,class: :log_out%>
+         <%=link_to current_user.nickname,user_registration_path,class: "user-nickname"%>
          </div>
          <% else %>
-         <div class="nav__right">
-          <%=link_to "ログイン",new_user_session_path,clsss: :nav__btn%>
-          <%=link_to "新規登録",new_user_registration_path,class: :nav__btn%>
+         <div class="lists_right">
+          <%=link_to "ログイン",new_user_session_path,class: :log_in%>
+          <%=link_to "新規登録",new_user_registration_path,class: :sign_up%>
       </div>
       <% end %>
-    </div>
     </div>
       </header>
   <%= yield %>
