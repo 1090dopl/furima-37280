@@ -34,6 +34,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'gimei'
+  gem 'rspec-rails','~>4.0.0'
 end
 
 group :development do
