@@ -77,7 +77,7 @@ RSpec.describe User, type: :model do
       it "password_confirmationが空では登録できない" do
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       
       it 'birthdayが空では登録できない' do
@@ -97,9 +97,22 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
       end
+      it 'passwordは半角英字のみでは登録できない' do
+       @user.password='abcdef'
+       @user.password_confirmation='abcdef'
+       @user.valid?
+       expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+    end
+
+      it 'passwordは半角数字のみでは登録できない' do
+       @user.password='123456'
+       @user.password_confirmation='123456'
+       @user.valid?
+       expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+    end
       it 'passwordとpassword_confirmationが不一致では登録できないこと' do
         @user.password = '12345a'
-        @user.password_confirmation = '123456a'
+        @user.password_confirmation = '12345ab'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
