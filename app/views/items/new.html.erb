@@ -5,10 +5,18 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <%= form_with (model:@item,local: true )do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+<<<<<<< Updated upstream:app/views/items/new.html.erb
     <%=render 'devise/shared/error_messages', model: f.object %>
+=======
+<<<<<<< Updated upstream:app/assets/images/furima_素材/views/items/new.html.erb
+    <%# render 'shared/error_messages', model: f.object %>
+=======
+    <%=render 'shared/error_messages', model: f.object %>
+>>>>>>> Stashed changes:app/views/items/new.html.erb
+>>>>>>> Stashed changes:app/assets/images/furima_素材/views/items/new.html.erb
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 商品画像 %>
