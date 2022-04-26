@@ -13,10 +13,11 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :image
     validates :name
-    validates :category_id,  numericality:{ other_than: 1}
-    validates :status_id,  numericality:{ other_than: 1 }
-    validates :charge_id,  numericality:{ other_than: 1}
-    validates :prefecture_id, numericality:{ other_than: 1}
-    validates :ship_date_id,  numericality:{ other_than: 1}
+    validates :price, numericality:{ greater_than_or_equal_to:300,less_than_or_equal_to:9_999_999}
+    validates :category_id,  numericality:{ other_than: 1,message: "can't be blank"}
+    validates :status_id,  numericality:{ other_than: 1,message: "can't be blank" }
+    validates :charge_id,  numericality:{ other_than: 1,message: "can't be blank"}
+    validates :prefecture_id, numericality:{ other_than: 1,message: "can't be blank"}
+    validates :ship_date_id,  numericality:{ other_than: 1,message: "can't be blank"}
   end
 end
