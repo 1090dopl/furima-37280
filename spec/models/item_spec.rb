@@ -77,14 +77,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item status can't be blank", 'Item status is not a number')
       end
       it '配送料の負担の情報が「---」だと出品できない' do
-        @item.shipping_cost_id = 0
+        @item.charge_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping cost must be other than 0')
+        expect(@item.errors.full_messages).to include('charge must be other than 0')
       end
       it '配送料の負担の情報が空欄だと出品できない' do
-        @item.shipping_cost_id = nil
+        @item.charge_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping cost can't be blank", 'Shipping cost is not a number')
+        expect(@item.errors.full_messages).to include("charge can't be blank", 'Shipping cost is not a number')
       end
       it '発送元の地域の情報が「---」だと出品できない' do
         @item.prefecture_id = 0
@@ -97,14 +97,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
       end
       it '発送までの日数の情報が「---」だと出品できない' do
-        @item.shipping_date_id = 0
+        @item.day_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping date must be other than 0')
+        expect(@item.errors.full_messages).to include('Day must be other than 0')
       end
       it '発送までの日数の情報が空欄だと出品できない' do
-        @item.shipping_date_id = nil
+        @item.day_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping date can't be blank", 'Shipping date is not a number')
+        expect(@item.errors.full_messages).to include("Day can't be blank", 'Shipping date is not a number')
       end
       it '価格が空欄だと出品できない' do
         @item.price = nil
