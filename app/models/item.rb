@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   belongs_to :prefecture
-  belongs_to :status
+  belongs_to :item_status
   belongs_to :charge
   belongs_to :category
   belongs_to :day
@@ -14,16 +14,28 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :user_id
     validates :explanation
-    validates :image,presence:{ message:'Please paste the image'}
-    validates :name,presence:{ message:'Please enter the name'}
-    validates :status_id, numericality:{ other_than: 0, message:'Please select the  status'}
-    validates :price,presence: { message:'Enter price'}
+    validates :image
+    validates :name
+    validates :item_status_id
+    validates :price, numericality:{ with: /\A[0-9]+\z/}
     validates :price, numericality:{ greater_than_or_equal_to:300,less_than_or_equal_to:9_999_999}
-    validates :category_id, numericality:{ other_than: 0, message:'Please select a category'}  
-    validates :charge_id ,numericality:{ other_than: 0, message:'Please select a charge'} 
-    validates :day_id,  numericality:{ other_than: 0, message:'Please select a day'}
+    validates :category_id  
+    validates :charge_id 
+    validates :day_id
+    validates :prefecture_id
   end
-end
-  
+
+  with_options numericality:{ other_than: 0} do
+    validates :category_id
+    validates :prefecture_id
+    validates :item_status_id
+    validates :charge_id
+    validates :day_id
 
 
+
+    def images_number
+      errors.add(:images, "を1つ以上指定してください") if images.size < 1
+    end
+  end
+end 

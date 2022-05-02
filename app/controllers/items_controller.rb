@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,expect:[:index,:show]
-
+  before_action :set_item,only:[:show,:edit,:update,:destroy]
 
   def index
     @items=Item.all
@@ -8,9 +8,8 @@ class ItemsController < ApplicationController
 
   def new
     @item=Item.new
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+  
+
   end
 
   def create
@@ -27,7 +26,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name,:image,:explanation,:price,:category_id,:status_id,:charge_id,:prefecture_id,:day_id).merge(user_id:current_user.id)
+    params.require(:item).permit(:name,:image,:explanation,:price,:category_id,:item_status_id,:charge_id,:prefecture_id,:day_id).merge(user_id:current_user.id)
   end
 
   def set_item
