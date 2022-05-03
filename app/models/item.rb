@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
-  has_one :purchases
+  #has_one :purchases
   #has_many :comments
   has_one_attached :image
 
@@ -34,8 +34,8 @@ class Item < ApplicationRecord
 
 
 
-    def images_number
-      errors.add(:images, "を1つ以上指定してください") if images.size < 1
-    end
+   # def images_number
+     # errors.add(:images, "を1つ以上指定してください") if images.size < 1
+    #end
   end
 end 
