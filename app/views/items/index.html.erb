@@ -152,8 +152,8 @@
       </li>
       <%end%>
 
-      
-     
+    
+      <% if @items.blank? then %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "item-sample.png", class: "item-img" %>
@@ -174,7 +174,7 @@
        </ul>
     </div>   
   </div>
-  
+  <%end%>
 <%= link_to(new_item_path,class:'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
