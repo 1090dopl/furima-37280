@@ -10,11 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
        @item=Item.new
-    else
-      redirect_to user_session_path(@item.id)
-  end
 end
 
   def create
@@ -27,7 +23,7 @@ end
   end
  
  def show
-  @item = Item.find(params[:id])
+  
  end
 
 
