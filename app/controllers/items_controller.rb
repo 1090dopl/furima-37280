@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
   
 
   def index
-    @items=Item.all
-    @items=Item.order(created_at: :desc)
+    @items=Item.all.order(created_at: :desc)
+    
     
   end
 
@@ -16,7 +16,7 @@ end
   def create
     @item=Item.new(item_params)
     if @item.save
-     redirect_to items_path
+     redirect_to root_path
     else
       render :new
     end
@@ -26,15 +26,23 @@ end
   
  end
 
+ def update
+  @item.update(item_params)
+  if @item.valid?
+    redirect_to item_path(item_params)
+  else
+    render 'edit'
+ end
+end
 
 
 
  def edit
-   #if @item.user_id ==current_user.id&&@item.purchase.nil
-   #else
-    #redirect_to root_path
+   if @item.user_id ==current_user.id
+   else
+    redirect_to root_path
    
-  #end
+  end
 end
   
 
