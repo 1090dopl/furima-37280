@@ -48,7 +48,7 @@ def destroy
   @item.destroy
   end
   redirect_to root_path
-
+end
 
  def destroy
    if @item.user_id == current_user.id
@@ -67,8 +67,3 @@ def destroy
     @item=Item.find(params[:id])
     end
    end
-  
-
-
-
-
