@@ -43,6 +43,12 @@ end
   end
 end
   
+def destroy
+  if @item.user_id == current_user.id
+  @item.destroy
+  end
+  redirect_to root_path
+
 
   private
 
