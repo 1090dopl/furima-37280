@@ -38,6 +38,7 @@ end
 
 
  def edit
+  @item=Item.find(params[:id])
    if @item.user_id ==current_user.id
    else
     redirect_to root_path
@@ -54,9 +55,15 @@ end
 
  def set_item
     @item=Item.find(params[:id])
+    if @item.user_id !=current_user.id
+      redirect_to root_path
+     end
+   end
+  
   end
+ 
 
-end
+
 
 
 
