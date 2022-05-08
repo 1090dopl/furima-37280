@@ -55,13 +55,7 @@ def destroy
     @item.destroy
    end
     redirect_to root_path
- 
-
-
-
-
-
-
+  end
 
   private
 
@@ -74,9 +68,6 @@ def destroy
     end
    end
   
- 
-
-
 
 
 
