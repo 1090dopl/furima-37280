@@ -11,7 +11,7 @@
 | birthday           | date | null:false  |
 
 .has_many ：items
-.has_many :order
+.has_many :orders
 
 
 # itemsテーブル
