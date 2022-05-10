@@ -30,7 +30,7 @@
 .has_one :purchase
 .belong_to :user
 
-# purchasesテーブル
+# ordersテーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | item   | references | null: false, foreign_key: true |
@@ -52,4 +52,4 @@
 | phone_number  |string |  null :false         |
 | purchase  |references| null :false,foreign_key: true |
 
-.belongs_to :purchase
+.belongs_to :orders
