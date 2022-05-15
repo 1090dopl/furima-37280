@@ -52,5 +52,5 @@
 | phone_number  |string |  null :false         |
 | order  |references| null :false,foreign_key: true |
 
-.belongs_to :orders
+.belongs_to :order
 
