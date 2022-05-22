@@ -31,10 +31,14 @@
     </div>
     <%# /支払額の表示 %>
 
+<<<<<<< HEAD
     <%= form_with(model:@order_form,id:'charge-form', url:item_orders_path(@item),class:'transaction-form-wrap',local: true) do |f| %>
 
    <%= render 'shared/error_messages',model: f.object %>
 
+=======
+    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+>>>>>>> parent of c7c6f4e (購入機能実装)
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>

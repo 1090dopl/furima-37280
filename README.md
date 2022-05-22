@@ -30,7 +30,7 @@
 .has_one :order
 .belong_to :user
 
-# ordersテーブル
+# purchasesテーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | item   | references | null: false, foreign_key: true |
@@ -54,3 +54,7 @@
 
 .belongs_to :order
 
+<<<<<<< HEAD
+=======
+.belongs_to :purchase
+>>>>>>> parent of c7c6f4e (購入機能実装)
