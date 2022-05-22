@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe OrderForm, type: :model do
- before do 
+ before do
+  user=FactoryBot.create(:user)
+  item=FactoryBot.create(:item)
   @order_form=FactoryBot.build(:order_form,user_id: user.id,item_id: item.id)
-  @user=FactoryBot.create(:user)
-  @item=FactoryBot.create(:item)
+  
 end
  
- describe '商品配送先登録' do
-  context '配送先情報の保存ができるとき' do
+ describe '商品購入' do
+  context '商品購入がうまくいく時' do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@order_form).to be_valid
     end
@@ -18,7 +19,7 @@ end
     end
   end
 
-  context '配送先情報の保存ができないとき' do
+  context '商品購入がうまくいかない時' do
     it 'user_idが空だと保存できない' do
       @order_form.user_id = nil
       @order_form.valid?
@@ -32,7 +33,7 @@ end
     it '郵便番号が空だと保存できないこと' do
       @order_form.postal_code = nil
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid. Include hyphen(-)')
+      expect(@order_form.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid')
     end
     it '郵便番号にハイフンがないと保存できないこと' do
       @order_form.postal_code = 1_234_567
