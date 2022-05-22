@@ -33,7 +33,7 @@ end
     it '郵便番号が空だと保存できないこと' do
       @order_form.postal_code = nil
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid')
+      expect(@order_form.errors.full_messages).to include("Postal code can't be blank")
     end
     it '郵便番号にハイフンがないと保存できないこと' do
       @order_form.postal_code = 1_234_567
@@ -73,7 +73,7 @@ end
     it '電話番号が９桁以下であると保存できないこと' do
       @order_form.phone_number=12_234_567
       @order_form.valid?
-      expect(@order_form.errors_full_messages).to include('Phone number is invalid')
+      expect(@order_form.errors.full_messages).to include('Phone number is invalid')
     end
     it '電話番号が12桁以上あると保存できないこと' do
       @order_form.phone_number = 12_345_678_910_123_111
