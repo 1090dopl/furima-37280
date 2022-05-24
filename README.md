@@ -11,7 +11,7 @@
 | birthday           | date | null:false  |
 
 .has_many ：items
-.has_many :orders
+.has_many :purchases
 
 
 # itemsテーブル
@@ -27,7 +27,7 @@
 | day_id      | integer  | null :false |
 | prefecture_id| integer | null :false|
 
-.has_one :order
+.has_one :purchase
 .belong_to :user
 
 # ordersテーブル
@@ -53,4 +53,3 @@
 | order  |references| null :false,foreign_key: true |
 
 .belongs_to :orders
-
