@@ -1,6 +1,7 @@
 
 # This migration comes from active_storage (originally 20170806125915)
 class CreateActiveStorageTables < ActiveRecord::Migration[6.0]
+>>>>>>> Stashed changes:db/migrate/20220520090340_create_active_storage_tables.active_storage.rb
   def change
     create_table :active_storage_blobs do |t|
       t.string   :key,        null: false
