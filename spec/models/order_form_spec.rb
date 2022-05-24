@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe OrderForm, type: :model do
- before do 
-  @order_form=FactoryBot.build(:order_form)
+ before do
+  user=FactoryBot.create(:user)
+  item=FactoryBot.create(:item)
+  @order_form=FactoryBot.build(:order_form,user_id: user.id,item_id: item.id)
+  
 end
-
-describe '配送先情報の保存' do
-  context '配送先情報の保存ができるとき' do
+ 
+ describe '商品購入' do
+  context '商品購入がうまくいく時' do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@order_form).to be_valid
     end
@@ -44,7 +47,7 @@ describe '配送先情報の保存' do
     end
   end
 
-  context '配送先情報の保存ができないとき' do
+  context '商品購入がうまくいかない時' do
     it 'user_idが空だと保存できない' do
       @order_form.user_id = nil
       @order_form.valid?
@@ -58,7 +61,7 @@ describe '配送先情報の保存' do
     it '郵便番号が空だと保存できないこと' do
       @order_form.postal_code = nil
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid. Include hyphen(-)')
+      expect(@order_form.errors.full_messages).to include("Postal code can't be blank")
     end
     it '郵便番号にハイフンがないと保存できないこと' do
       @order_form.postal_code = 1_234_567
@@ -92,6 +95,11 @@ describe '配送先情報の保存' do
     end
     it '電話番号にハイフンがあると保存できないこと' do
       @order_form.phone_number = '123 - 1234 - 1234'
+      @order_form.valid?
+      expect(@order_form.errors.full_messages).to include('Phone number is invalid')
+    end
+    it '電話番号が９桁以下であると保存できないこと' do
+      @order_form.phone_number=12_234_567
       @order_form.valid?
       expect(@order_form.errors.full_messages).to include('Phone number is invalid')
     end
