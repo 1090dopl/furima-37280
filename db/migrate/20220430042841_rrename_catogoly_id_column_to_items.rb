@@ -4,4 +4,3 @@ class RrenameCatogolyIdColumnToItems < ActiveRecord::Migration[6.0]
     rename_column :items,:status_id,:item_status_id
   end
 end
-
