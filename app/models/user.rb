@@ -2,13 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
       
-<<<<<<< HEAD
       has_many :items
       has_many :orders
-=======
-      #has_many :items
-      #has_many :purchases
->>>>>>> parent of c7c6f4e (購入機能実装)
     
       
       PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
