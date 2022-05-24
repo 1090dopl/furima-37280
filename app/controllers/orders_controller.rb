@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
    before_action :authenticate_user!
-   before_action :non_order_item,only:[:index,:create]
+
 
   def index
+    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new
   end
 
@@ -12,11 +13,12 @@ class OrdersController < ApplicationController
 
 
   def create
+    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new(order_params)
     if @order_form.valid?
       pay_item
       @order_form.save
-      return redirect_to root_path
+       return redirect_to root_path
     else
       render :index
     end
@@ -36,9 +38,5 @@ class OrdersController < ApplicationController
         currency: 'jpy'
      )
     end
-  
-   def non_order_item
-    @item= Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
-   end
-  end
+
+end

@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     @items=Item.all.order(created_at: :desc)
     
+    
   end
 
   def new
@@ -37,21 +38,24 @@ end
 
 
  def edit
-  if @item.user_id == current_user.id && @item.order.nil?
-  else  
-    redirect_to root_path
+  if @item.user_id != current_user.id
+      redirect_to root_path
   end
 end
   
 def destroy
   if @item.user_id == current_user.id
   @item.destroy
-  redirect_to root_path
-  else
-  redirect_to root_path
   end
+  redirect_to root_path
 end
 
+ def destroy
+   if @item.user_id == current_user.id
+    @item.destroy
+   end
+    redirect_to root_path
+  end
 
   private
 
