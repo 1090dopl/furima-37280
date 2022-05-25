@@ -99,12 +99,12 @@ end
       expect(@order_form.errors.full_messages).to include('Phone number is invalid')
     end
     it '電話番号が９桁以下であると保存できないこと' do
-      @order_form.phone_number=12_234_567
+      @order_form.phone_number=12_234_5678
       @order_form.valid?
       expect(@order_form.errors.full_messages).to include('Phone number is invalid')
     end
     it '電話番号が12桁以上あると保存できないこと' do
-      @order_form.phone_number = 12_345_678_910_123_111
+      @order_form.phone_number = 12_345_678_910_1234
       @order_form.valid?
       expect(@order_form.errors.full_messages).to include('Phone number is invalid')
     end

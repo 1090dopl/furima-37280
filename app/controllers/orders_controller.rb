@@ -6,9 +6,6 @@ class OrdersController < ApplicationController
     @order_form = OrderForm.new
   end
 
-  def new
-  end
-
 
 
   def create
