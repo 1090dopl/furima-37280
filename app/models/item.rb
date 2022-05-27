@@ -17,7 +17,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :item_status_id
-    validates :price, numericality:{ with: /\A[0-9]+\z/,greater_than_or_equal_to:300,less_than_or_equal_to:9_999_999,message: 'is not a number,shoud half-width number'}
+    validates :price, numericality:{ with: /\A[0-9]+\z/,greater_than_or_equal_to:300,less_than_or_equal_to:9_999_999,message: 'is not a number'}
     validates :category_id  
     validates :charge_id 
     validates :day_id
