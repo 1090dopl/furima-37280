@@ -12,7 +12,7 @@
 
 .has_many ：items
 .has_many :orders
-
+.has_many :comments
 
 # itemsテーブル
 | Column | Type   | Options     |
@@ -29,6 +29,7 @@
 
 .has_one :order
 .belong_to :user
+.has_many :comments
 
 # ordersテーブル
 | Column | Type       | Options                        |
@@ -54,3 +55,5 @@
 
 .belongs_to :order
 
+
+#
