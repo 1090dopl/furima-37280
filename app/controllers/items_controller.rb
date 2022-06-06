@@ -22,8 +22,7 @@ end
   end
  
  def show
-  @comments = @item.comments.includes(:user)
-  @comment = Comment.new
+  
  end
 
  def update
