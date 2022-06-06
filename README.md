@@ -55,5 +55,14 @@
 
 .belongs_to :order
 
+# commentsテーブル
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| text | text  |       |
+| user_id | integer |     |
+| item_id       | string  |   |
 
-#
+.has_many :user
+.has_many :item
+
+
