@@ -4,7 +4,7 @@ class User < ApplicationRecord
       
       has_many :items
       has_many :orders
-      has_many :comments
+    
       
       PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
       validates :password,:password_confirmation,format:{with:PASSWORD_REGEX,message:'Include both letters and numbers'},presence: true,length:{minimum:6}
