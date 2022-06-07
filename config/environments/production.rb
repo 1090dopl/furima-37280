@@ -2,8 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = "wss://【Herokuアプリ名】.herokuapp.com/cable" 
-  config.action_cable.allowed_request_origins = ['https://【Herokuアプリ名】.herokuapp.com', 'http://【Herokuアプリ名】.herokuapp.com']
+  config.action_cable.url = "wss://【furima-37280】.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://【furima-37280】.herokuapp.com', 'http://【Herokuアプリ名】.herokuapp.com']
 
 # 省略
 
@@ -120,4 +120,5 @@ end
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+end
 end
