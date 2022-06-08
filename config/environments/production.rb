@@ -5,15 +5,6 @@ Rails.application.configure do
   config.action_cable.url = "wss://furima-37280.herokuapp.com/cable" 
   config.action_cable.allowed_request_origins = ['https://furima-37280.herokuapp.com', 'http://【furima-37280】.herokuapp.com']
 
-
-
-
-
-end
-
-
-
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
