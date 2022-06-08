@@ -7,7 +7,7 @@ Rails.application.configure do
 
 
 
-# 省略
+
 
 end
 
