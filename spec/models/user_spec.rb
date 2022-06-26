@@ -89,38 +89,38 @@ RSpec.describe User, type: :model do
         @user.password = "1234a"
         @user.password_confirmation="1234a"
         @user.valid?
-        expect(@user.errors.full_messages).to include('パスワード（確認用）とパスワードは６文字以上で入力してください')
+        expect(@user.errors.full_messages).to include('パスワードは６文字以上で入力してください')
       end
       it 'password(確認含む）が半角英数字でなければ登録できない' do
         @user.password = '123456'
         @user.password_confirmation='123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード(確認用）とパスワードをは角英数字で入力してください")
+        expect(@user.errors.full_messages).to include("パスワードは半角英数字で入力してください")
       end
       it 'passwordは半角英字のみでは登録できない' do
        @user.password='abcdef'
        @user.password_confirmation='abcdef'
        @user.valid?
-       expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードは半角英数字で入力してください")
+       expect(@user.errors.full_messages).to include("パスワードは半角英数字で入力してください")
     end
 
       it 'passwordは半角数字のみでは登録できない' do
        @user.password='123456'
        @user.password_confirmation='123456'
        @user.valid?
-       expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードは半角英数字で入力してください")
+       expect(@user.errors.full_messages).to include("パスワードは半角英数字で入力してください")
     end
       it 'passwordとpassword_confirmationが不一致では登録できないこと' do
         @user.password = '12345a'
         @user.password_confirmation = '12345ab'
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
+        expect(@user.errors.full_messages).to include("パスワード（確認含む）とパスワードの入力が一致しません")
       end
       it '全角文字を含むパスワードでは登録できない' do
         @user.password='ああああああ'
         @user.password_confirmation='ああああああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード（確認用）は不正な値です")
+        expect(@user.errors.full_messages).to include("パスワードは不正な値です")
       end
         it 'last_nameが全角（漢字・ひらがな・カタカナ）でないと登録できない' do
           @user.last_name = 'yamada'
