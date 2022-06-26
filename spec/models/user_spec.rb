@@ -89,32 +89,32 @@ RSpec.describe User, type: :model do
         @user.password = "1234a"
         @user.password_confirmation="1234a"
         @user.valid?
-        expect(@user.errors.full_messages).to include('パスワードは６文字以上で入力してください')
+        expect(@user.errors.full_messages).to include("パスワードとパスワード（確認用）は6文字以上で入力してください")
       end
       it 'password(確認含む）が半角英数字でなければ登録できない' do
         @user.password = '123456'
         @user.password_confirmation='123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワードは半角英数字で入力してください")
+        expect(@user.errors.full_messages).to include("パスワードは不正な値です")
       end
       it 'passwordは半角英字のみでは登録できない' do
        @user.password='abcdef'
        @user.password_confirmation='abcdef'
        @user.valid?
-       expect(@user.errors.full_messages).to include("パスワードは半角英数字で入力してください")
+       expect(@user.errors.full_messages).to include("パスワードは不正な値です")
     end
 
       it 'passwordは半角数字のみでは登録できない' do
        @user.password='123456'
        @user.password_confirmation='123456'
        @user.valid?
-       expect(@user.errors.full_messages).to include("パスワードは半角英数字で入力してください")
+       expect(@user.errors.full_messages).to include("パスワードは不正な値です")
     end
       it 'passwordとpassword_confirmationが不一致では登録できないこと' do
         @user.password = '12345a'
         @user.password_confirmation = '12345ab'
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード（確認含む）とパスワードの入力が一致しません")
+        expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
       end
       it '全角文字を含むパスワードでは登録できない' do
         @user.password='ああああああ'
@@ -125,22 +125,22 @@ RSpec.describe User, type: :model do
         it 'last_nameが全角（漢字・ひらがな・カタカナ）でないと登録できない' do
           @user.last_name = 'yamada'
           @user.valid?
-          expect(@user.errors.full_messages).to include('苗字は全角（漢字・ひらがな・カタカナ）を入力してください')
+          expect(@user.errors.full_messages).to include('苗字は不正な値です')
         end
         it 'first_nameが全角（漢字・ひらがな・カタカナ）でないと登録できない' do
           @user.first_name = 'rikutaro'
           @user.valid?
-          expect(@user.errors.full_messages).to include('名前を入力してください')
+          expect(@user.errors.full_messages).to include('名前は不正な値です')
         end
         it 'first_name_kanaのフリガナは全角（カタカナ)でなければ登録できない' do
           @user.first_name_kana='陸太郎'
           @user.valid?
-          expect(@user.errors.full_messages).to include("名前カナを入力してください")
+          expect(@user.errors.full_messages).to include("名前カナは不正な値です")
       end
       it 'last_name_kanaのフリガナは全角（カタカナ)でなければ登録できない' do
          @user.last_name_kana='山田'
          @user.valid?
-         expect(@user.errors.full_messages).to include("苗字カナを入力してください")
+         expect(@user.errors.full_messages).to include("苗字カナは不正な値です")
       end
       it 'first_name_kanaが空だと登録できない' do
         @user.first_name_kana=''
