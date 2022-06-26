@@ -89,26 +89,26 @@ RSpec.describe User, type: :model do
         @user.password = "1234a"
         @user.password_confirmation="1234a"
         @user.valid?
-        expect(@user.errors.full_messages).to include('パスワード（確認含む）は６文字以上で入力してください')
+        expect(@user.errors.full_messages).to include('パスワード（確認用）とパスワードは６文字以上で入力してください')
       end
       it 'password(確認含む）が半角英数字でなければ登録できない' do
         @user.password = '123456'
         @user.password_confirmation='123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード(確認含む）を半角英数字で入力してください")
+        expect(@user.errors.full_messages).to include("パスワード(確認用）とパスワードをは角英数字で入力してください")
       end
       it 'passwordは半角英字のみでは登録できない' do
        @user.password='abcdef'
        @user.password_confirmation='abcdef'
        @user.valid?
-       expect(@user.errors.full_messages).to include("パスワード（確認含む）は半角英数字で入力してください")
+       expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードは半角英数字で入力してください")
     end
 
       it 'passwordは半角数字のみでは登録できない' do
        @user.password='123456'
        @user.password_confirmation='123456'
        @user.valid?
-       expect(@user.errors.full_messages).to include("パスワード（確認含む）は半角英数字で入力してください")
+       expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードは半角英数字で入力してください")
     end
       it 'passwordとpassword_confirmationが不一致では登録できないこと' do
         @user.password = '12345a'
