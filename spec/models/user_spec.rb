@@ -89,7 +89,7 @@ RSpec.describe User, type: :model do
         @user.password = "1234a"
         @user.password_confirmation="1234a"
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワードとパスワード（確認用）は6文字以上で入力してください")
+        expect(@user.errors.full_messages).to include("パスワードは6文字以上で入力してください")
       end
       it 'password(確認含む）が半角英数字でなければ登録できない' do
         @user.password = '123456'
