@@ -55,6 +55,8 @@
 
 .belongs_to :order
 
+
+ 
 # commentsテーブル
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
